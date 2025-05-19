@@ -39,7 +39,15 @@ function checkPassword() {
         strengthText.style.color = "green";
         strengthText.className = "strong";
         progressBar.style.backgroundColor = "green";
-    } else if (score >= 4) {
+
+        // 🎉 Konfetti!
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    }
+    else if (score >= 4) {
         strengthText.innerText = "Średnie";
         strengthText.style.color = "orange";
         strengthText.className = "medium";
