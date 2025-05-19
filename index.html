@@ -14,8 +14,9 @@
     }
 
     section#project {
+
       max-width: 800px;
-      margin: auto;
+        margin-top: 4rem;
       padding: 2rem;
       background: white;
       border-radius: 16px;
@@ -123,11 +124,50 @@
       font-size: 0.9rem;
       color: #777;
     }
+    .download-container {
+        display: flex;
+        justify-content: center;
+        margin: 2rem auto;
+    }
+
+    .download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: #3498db;
+        color: white;
+        padding: 0.7rem 1.4rem;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 0.95rem;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        transition: background 0.3s, transform 0.2s;
+    }
+
+    .download-btn:hover {
+        background-color: #2980b9;
+        transform: translateY(-1px);
+    }
+
+    .download-btn .icon {
+        width: 20px;
+        height: 20px;
+    }
+
   </style>
 </head>
 <body>
+<div class="download-container">
+    <a href="https://github.com/twoj-user/twoje-repo/raw/main/prezentacja.pdf" class="download-btn" download>
+        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991108.png" alt="PDF" class="icon" />
+        Pobierz prezentację z zajęć (PDF)
+    </a>
+</div>
   <section id="project">
-    <h1>Analiza Bezpieczeństwa Hasła</h1>
+
+
+      <h1>Analiza Bezpieczeństwa Hasła</h1>
     <h3>Wpisz hasło, aby sprawdzić jego siłę:</h3>
 
     <div class="password-container">
