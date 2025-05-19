@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analiza Bezpieczeństwa Hasła</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<section id="project">
+    <h1>Analiza Bezpieczeństwa Hasła</h1>
+    <h3>Wpisz hasło, aby sprawdzić jego siłę:</h3>
+
+    <div class="password-container">
+        <input type="password" id="password" placeholder="Wpisz hasło">
+        <img id="togglePassword" src="assets/eye-look-icon.png" alt="Pokaż hasło">
+    </div>
+
+
+    <div class="progress-bar-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <div id="result">
+        <p id="hibp-warning"></p> <!-- Komunikat o wycieku będzie tutaj -->
+        <p><strong>Siła hasła:</strong> <span id="strength"></span></p>
+        <p id="feedback"></p>
+        <p id="crack-time"><strong>Czas złamania:</strong> -</p>
+    </div>
+
+    <button onclick="generatePassword()">Wygeneruj silne hasło</button>
+    <p id="generated-password"></p>
+
+    <div class="disclaimer">
+        <p><strong> UWAGA:</strong> Wpisane hasło nie jest przez stronę zapisywane. Zastosuj zasadę ograniczonego zaufania i <strong>nie podawaj swojego dokładnego hasła</strong>, którego aktualnie używasz bądź planujesz użyć. Strona stanowi wyłącznie ciekawostkę edukacyjną.</p>
+    </div>
+
+    <div class="password-guide">
+        <h2>Jak tworzyć silne hasła?</h2>
+        <ul>
+            <li> <strong>Długość ma znaczenie</strong> - Twoje hasło powinno mieć <strong>co najmniej 12 znaków</strong>.</li>
+            <li> <strong>Używaj różnych typów znaków</strong> - mieszaj <strong>małe i wielkie litery, cyfry oraz znaki specjalne (!@#$%^&*)</strong>.</li>
+            <li> <strong>Unikaj przewidywalnych haseł</strong> - „123456”, „password” lub „qwerty” są łatwe do złamania.</li>
+            <li> <strong>Nie używaj swoich danych osobowych</strong> - imię, nazwisko, data urodzenia to złe pomysły.</li>
+            <li> <strong>Nie używaj jednego hasła na wielu stronach</strong> - w przypadku wycieku, możesz stracić dostęp do wielu kont.</li>
+            <li> <strong>Zastanów się nad użyciem menedżera haseł</strong> - zapamięta on Twoje hasła i wygeneruje silne kombinacje.</li>
+            <li> <strong>Nie udostępniaj swojego hasła nikomu</strong> - nigdy, nawet znajomym.</li>
+        </ul>
+    </div>
+
+    <div class="crack-time-info">
+        <h2>Jak obliczany jest czas łamania hasła?</h2>
+        <p>Obliczenia bazują na badaniach <a href="https://www.hivesystems.com/blog/are-your-passwords-in-the-green" target="_blank">Hive Systems</a>, które analizują czas potrzebny do złamania hasła metodą brute-force.</p>
+        <ul>
+            <li> Zakładamy, że hasła są przechowywane w systemach jako hasze bcrypt (32 iteracje).</li>
+            <li> Przyjmujemy atak przeprowadzany na 12 kartach graficznych RTX 4090.</li>
+            <li> Czasy zależą od długości i zestawu znaków w haśle (cyfry, litery, symbole).</li>
+            <li> Wyniki pokazują <strong>najgorszy scenariusz</strong>, w którym atakujący ma dostęp do hashy.</li>
+        </ul>
+    </div>
+    <div class="hibp-check">
+        <h2>Czy Twoje hasło było w wycieku?</h2>
+        <p>Strona wykorzystuje API <a href="https://haveibeenpwned.com" target="_blank">Have I Been Pwned</a>, aby sprawdzić, czy Twoje hasło pojawiło się w znanych wyciekach danych. Działa to w sposób bezpieczny:</p>
+        <ul>
+            <li> <strong>Twoje hasło nie jest nigdzie wysyłane</strong> – zamiast tego tworzony jest jego unikalny skrót (SHA-1), czyli zaszyfrowana wersja, której nie da się łatwo odwrócić. Do serwera wysyłane jest tylko pierwsze 5 znaków tego skrótu, dzięki czemu Twoje hasło pozostaje bezpieczne i nigdy nie jest ujawniane</li>
+            <li> API zwraca listę możliwych hashy – sprawdzamy je lokalnie, bez wysyłania pełnego hasła.</li>
+            <li> Jeśli Twoje hasło było w wycieku, zobaczysz ostrzeżenie i <strong>czas złamania zmieni się na "Natychmiast"</strong>.</li>
+        </ul>
+    </div>
+
+
+
+    <div class="update-info">
+        <i> Ostatnia aktualizacja: 15.03.2025 r.</i>
+    </div>
+
+</section>
+<footer>
+    <p>Strona tymczasowa.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
 
